@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import { useElementTop } from './hooks/useElementTop'
+
+const hw = ref();
+const height = useElementTop(hw.value, 20)
+
+
 </script>
 
 <template>
@@ -11,7 +18,10 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld ref="hw" msg="Vite + Vue" />
+  <div>
+    {{ height }}
+  </div>
 </template>
 
 <style scoped>
